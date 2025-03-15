@@ -413,6 +413,12 @@ background-color: black;
     top: 50px;
     left: -13px;
   }
+
+  .input-container input::placeholder,
+  .input-container textarea::placeholder {
+    color: white;
+    opacity: 1;
+  }
   
   form {
     padding: 2.3rem 2.2rem;
