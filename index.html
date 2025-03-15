@@ -199,7 +199,7 @@
                 <span>Phone</span>
               </div>
               <div class="input-container textarea">
-                <textarea name="message" class="input"></textarea>
+                <textarea name="message" id="message" class="input"></textarea>
                 <!-- <label for="">Message</label> -->
                 <span>Message</span>
               </div>
@@ -208,6 +208,25 @@
           </div>
         </div>
       </div>
+
+      <script>
+        document.getElementById("contact").addEventListener("submit", async function (event) {
+          event.preventDefault(); // Prevent form refresh
+      
+          let name = document.getElementById("name").value;
+          let email = document.getElementById("email").value;
+          let message = document.getElementById("message").value;
+      
+          let response = await fetch("http://localhost:3000/send-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, message }),
+          });
+      
+          let result = await response.text();
+          document.getElementById("response-message").textContent = result;
+        });
+      </script>
 
     <footer>
         <h6>© Made with ❤️ by Aishika Vishwakarma </h6>
